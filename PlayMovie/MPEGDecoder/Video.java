@@ -28,6 +28,12 @@ public class Video implements Runnable
 	                instream = new BitInputStream(movieurl.openStream());
 				
                 gop.setstream(instream);
+            }catch (IOException e1)
+            {
+                System.out.println("Error during opening stream");
+                return;
+            }
+            while(true){
                 starttime = System.currentTimeMillis();
                 gop.clearnumofpic();
                 store.clearprevdisptime();
@@ -45,15 +51,19 @@ public class Video implements Runnable
                 if (string.length() > 5)
                     string = string.substring(0, 5);
                 fps.setText(string + " fps");
-                System.out.println("Video finished");
-                stopmovie();
-                vod.stopmovie();
-            }
-            catch (IOException e1)
-            {
-                System.out.println("Error during opening stream");
-                return;
-            }
+               try{
+		if (movieurl.getProtocol().toLowerCase().equals("file")){
+			String fileName = movieurl.getHost()+":"+movieurl.getFile();
+			instream = new BitInputStream(new FileInputStream(fileName));
+		}
+		else	instream = new BitInputStream(movieurl.openStream());
+	        gop.setstream(instream);
+	        }
+	        catch (IOException e2){
+	           System.out.println("Error");
+	           stopmovie();
+	           vod.stopmovie();
+	           return;}
         }
       
     }
