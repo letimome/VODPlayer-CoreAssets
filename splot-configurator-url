@@ -1,1 +1,1 @@
-http://ec2-52-32-1-180.us-west-2.compute.amazonaws.com:8080/SPLOT/SplotConfigurationServlet?action=interactive_configuration_main&op=reset&userModels=&tmpModelPath=temp_models&selectedModels=model_20151216_1261720869.xml
+http://52.32.1.180:8080/SPLOT/SplotConfigurationServlet?action=interactive_configuration_main&op=reset&userModels=&tmpModelPath=temp_models&selectedModels=model_20180711_766342340.xml
